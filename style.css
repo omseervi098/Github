@@ -1,0 +1,21 @@
+.active {
+  background-color: #7979798a;
+}
+body {
+  background-color: #f5f5f5;
+}
+/* Profile Container */
+#profile > .card {
+  background-color: aliceblue;
+}
+#profile img {
+  border-radius: 50% !important;
+}
+#profile h5 {
+  font-weight: bold;
+}
+
+/* Repo Container */
+#repos .card {
+  background-color: rgb(232, 244, 255);
+}
