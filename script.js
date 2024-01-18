@@ -10,7 +10,8 @@ const searchReposForm = document.getElementById("searchRepos");
 const pageitemprev = document.getElementById("page-item-no-prev");
 const pageitemnext = document.getElementById("page-item-no-next");
 const ui = new UI(profile, repos);
-const github = new Github();
+const token = gettoken();
+const github = new Github(token);
 searchUser.addEventListener("submit", async (e) => {
   e.preventDefault();
 

@@ -5,8 +5,8 @@ class Github {
   current_page = 1;
   sortby = "created";
   orderby = "asc";
-  constructor() {
-    this.token = "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";
+  constructor(token) {
+    this.token = token;
   }
   async setUsername(username) {
     this.username = username;
