@@ -22,6 +22,9 @@ searchUser.addEventListener("submit", async (e) => {
     const user = await github.getUser();
     if (user.profile.message === "Not Found") {
       ui.hideProfileLoader();
+      ui.hideReposLoader();
+      github.setUsername("");
+      searchRepo.className = "d-none";
       ui.showNoProfileFound();
       return;
     }
@@ -37,8 +40,7 @@ searchUser.addEventListener("submit", async (e) => {
 
 Array.from(pageitems).forEach((pageitem) => {
   pageitem.addEventListener("click", async (e) => {
-    const userText = searchUser.value;
-    const github = new Github(userText);
+    e.preventDefault();
     ui.showReposLoader();
     localStorage.setItem("current_page", e.target.id);
     github.setCurrentPage(e.target.id);
@@ -59,8 +61,7 @@ Array.from(pageitems).forEach((pageitem) => {
 });
 
 pageitemnext.addEventListener("click", async (e) => {
-  const userText = searchUser.value;
-  const github = new Github(userText);
+  e.preventDefault();
   ui.showReposLoader();
   const current_page = localStorage.getItem("current_page");
   if (current_page === null) {
@@ -86,8 +87,7 @@ pageitemnext.addEventListener("click", async (e) => {
 });
 
 pageitemprev.addEventListener("click", async (e) => {
-  const userText = searchUser.value;
-  const github = new Github(userText);
+  e.preventDefault();
   ui.showReposLoader();
   const current_page = localStorage.getItem("current_page");
   if (current_page === null) {
@@ -113,6 +113,7 @@ pageitemprev.addEventListener("click", async (e) => {
   ui.showRepos(repos.repos.repos);
 });
 perpage.addEventListener("change", async (e) => {
+  e.preventDefault();
   github.setPerPage(e.target.value);
   ui.showReposLoader();
   const repos = await github.combineReposAndLanguages(1);
@@ -125,6 +126,7 @@ perpage.addEventListener("change", async (e) => {
 });
 
 orderby.addEventListener("change", async (e) => {
+  e.preventDefault();
   github.setOrderBy(e.target.value);
   ui.showReposLoader();
   const repos = await github.combineReposAndLanguages(1);
@@ -137,6 +139,7 @@ orderby.addEventListener("change", async (e) => {
 });
 
 sortby.addEventListener("change", async (e) => {
+  e.preventDefault();
   github.setSortBy(e.target.value);
   ui.showReposLoader();
   const repos = await github.combineReposAndLanguages(1);

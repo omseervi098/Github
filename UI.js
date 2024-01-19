@@ -94,7 +94,6 @@ class UI {
     let output = "";
     repos.forEach((repo) => {
       output += `
-      
         <div class="card card-body mb-2 col-5 d=flex flex-column justify-content-between">
         <h4 class="text-primary ">
         <a href="${
@@ -102,7 +101,7 @@ class UI {
         }" class="text-decoration-none" target="_blank">${repo.name}</a>
         </h4>
         ${repo.description ? `<span class="">${repo.description}</span>` : ""}
-        <div class="languages">
+        <div class="languages d-flex flex-wrap gap-2">
         ${
           repo.languages
             ? (function () {
@@ -121,8 +120,9 @@ class UI {
     this.repos.innerHTML = `
         <div class="container">
         <div class="row gap-2">
-    ${output}</div>
-    </div>
+          ${output}
+          </div>
+          </div>
     `;
   }
 }

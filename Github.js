@@ -90,7 +90,7 @@ class Github {
     };
   }
   async search(query) {
-    if (this.query === "") {
+    if (query === "") {
       return null;
     }
     try {
